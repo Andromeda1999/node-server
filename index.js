@@ -53,16 +53,16 @@ let keys = [
     "SGd7U5Z2wjCQuosTdwhZq87o",
 ]
 let keyValid = keys[0]
-// fs.readdir(path2, function (err, archivos) {
-//     if (err) {
-//         onError(err);
-//         return;
-//     }
-//     arrayImage = archivos
-//     // console.log(archivos);
-//     // transformImage(archivos)
-//     // test(archivos)
-// });
+fs.readdir(path2, function (err, archivos) {
+    if (err) {
+        onError(err);
+        return;
+    }
+    arrayImage = archivos
+    // console.log(archivos);
+    transformImage(archivos)
+    // test(archivos)
+});
 
 
 
