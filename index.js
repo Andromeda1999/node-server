@@ -57,33 +57,44 @@ function webServer(req, res) {
 }
 
 http.listen(3000)
+console.log("listening 3000")
 
 // const path = "C:/Users/51988/Desktop/TRANSFORMER/NICK/FOTOS INGRESANTES ETAPA-II/EDUCACIÓN PRIMARIA/"
 
 
 let keys = [
-    "q52uKr1KrwfXgB3168wj2n9D",
-    "16ZoFmttd9iEMCY5cPPo9XEW",
-    "nzWRFuEowU99Fkf5mp2z3d44",
-    "6mwwesVVdggVS7S8vUn6gE55",
-    "Ydwm9JnBQZP9pxJXqgMvG2TK",
-    "VrzLYHkec9EQ1CFVjvwimdF3",
-    "iH489EMz9kASeD2bSqHPgn6t",
-    "i3ifrViXm1MkMu2c6kcU76Yu",
-    "MtbByFNyBaezx6fMt81RrcJA",
-    "91XM57FttHDmcGMmQ4U5He5z",
-    "SS63Vw2cytT1WUyU24gd8TJA",
-    "yBpx8WqC8g4QpeiZWfu5cKCy",
-    "2vQrqa6LwzKYydLjoYRZtr5Q",
-    "4vzasrp7M81K5UDmvHggCACf",
-    "Auyu2aottcECFzkZh1LihUKj",
-    "QvpVqjrwvFeWNEoiGs8Q1mhs",
-    "JFbHs19MrRUBgnWe3NAcPtxi",
-    "CJaVU7pYmQ3Q8WTR4R1JZqhL",
-    "ZhiVhqR4oGmkdy7hitem1Arp",
-    "pWGMThB5dNDNXc226zYwkw5b",
-    "uTwzgSnZoVZiYsnZsxKqL1z5",
-    "SGd7U5Z2wjCQuosTdwhZq87o",
+    // "q52uKr1KrwfXgB3168wj2n9D",
+    // "16ZoFmttd9iEMCY5cPPo9XEW",
+    // "nzWRFuEowU99Fkf5mp2z3d44",
+    // "6mwwesVVdggVS7S8vUn6gE55",
+    // "Ydwm9JnBQZP9pxJXqgMvG2TK",
+    // "VrzLYHkec9EQ1CFVjvwimdF3",
+    // "iH489EMz9kASeD2bSqHPgn6t",
+    // "i3ifrViXm1MkMu2c6kcU76Yu",
+    // "MtbByFNyBaezx6fMt81RrcJA",
+    // "91XM57FttHDmcGMmQ4U5He5z",
+    // "SS63Vw2cytT1WUyU24gd8TJA",
+    // "yBpx8WqC8g4QpeiZWfu5cKCy",
+    // "2vQrqa6LwzKYydLjoYRZtr5Q",
+    // "4vzasrp7M81K5UDmvHggCACf",
+    // "Auyu2aottcECFzkZh1LihUKj",
+    // "QvpVqjrwvFeWNEoiGs8Q1mhs",
+    // "JFbHs19MrRUBgnWe3NAcPtxi",
+    // "CJaVU7pYmQ3Q8WTR4R1JZqhL",
+    // "ZhiVhqR4oGmkdy7hitem1Arp",
+    // "pWGMThB5dNDNXc226zYwkw5b",
+    // "uTwzgSnZoVZiYsnZsxKqL1z5",
+    // "SGd7U5Z2wjCQuosTdwhZq87o",
+    "JmkoeQU2pYmTYtjvDTr1kNqL",
+    "k8ZFimdhkBDPMUPdk743aky1",
+    "R26s4v6Net6a4ZWyMichPeAZ",
+    "iPEaChdk9Xrn6p1MJmjMgFTF",
+    "aTwtz1ztTU9qk4b8b16BRFCo",
+    "kPAuCgEsageBZFR9Q8oFsaqs",
+    "UE2JeLsEHS2S5U3R8xo5HGHe",
+    "izMHvhnM8dJZieCsV41VuTpU",
+    "dK3MHuaj6vk7T8NdVYZx2iCm",
+    "YWZTz7XHA8vNo61ZzdMB1GWx",
 ]
 let keyValid = keys[0]
 
@@ -136,6 +147,8 @@ async function transformImage(archivos) {
                 .resize({
                     height: 288, width: 240,
                     position: 'center',
+                    kernel: sharp.kernel.nearest,
+                    fit: 'fill',
 
                 })
                 .toBuffer().then(data => {
