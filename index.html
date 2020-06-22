@@ -3,11 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>Document</title>
   </head>
   <body>
     <div>
-      <form action="http://127.0.0.1:3000/myaction" method="post">
+      <form method="post">
+        <div id="app">
+          {{ message }}
+        </div>
         <h1>RUTA DE ENTRADA</h1>
         <p>ejemplo : C:/USER..</p>
         <input type="text" id="into" name="into" />

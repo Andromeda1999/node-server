@@ -16,14 +16,14 @@ http.listen(3000, () => {
 app.post('/myaction', function (req, res) {
     // res.send('You sent the name "' + req.body + '".');
     console.log("dev respuesta", { req, res })
-
 });
 
 // const path = "C:/Users/51988/Desktop/TRANSFORMER/NICK/FOTOS INGRESANTES ETAPA-II/EDUCACIÓN PRIMARIA/"
-const path2 = "D:/FOTOS-INGRESANTES 2020/fotos Ingresantes  2020 Filial San Lorenzo/"
-var dir = 'salida';
-fs.mkdirSync(dir);
-if (!fs.existsSync(dir)) {
+const path2 = "C:/Users/51988/Desktop/SALIDA DESTOP/"
+
+var dir = 'salida/';
+
+if (!fs.existsSync(path2 + dir)) {
     fs.mkdirSync(path2 + dir);
 }
 const path3 = path2 + dir
