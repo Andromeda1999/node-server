@@ -1,22 +1,36 @@
 
 let app = require('express')();
-let http = require('http').Server(app);
 var request = require('request');
 var fs = require('fs')
 const sharp = require('sharp');
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html')
-});
+//server
+var http = require('http').createServer(webServer),
+    form = require('fs').readFileSync('index.html'),
+    querystring = require('querystring'),
+    util = require('util'),
+    dataString = ''
 
-http.listen(3000, () => {
-    console.log('Listening on port *: 3000');
-});
+function webServer(req, res) {
+    if (req.method == 'GET') {
+        res.writeHead(200, { 'Content-Type': 'text/html' })
+        res.end(form)
+    }
 
-app.post('/myaction', function (req, res) {
-    // res.send('You sent the name "' + req.body + '".');
-    console.log("dev respuesta", { req, res })
-});
+    if (req.method == 'POST') {
+        req.on('data', function (data) {
+            dataString += data
+        }).on("end", function () {
+            var templateString = `datos enviados ${dataString}`
+            console.log(templateString)
+            res.end(templateString)
+        })
+    }
+}
+
+http.listen(3000)
+
+console.log("Runing server")
 
 // const path = "C:/Users/51988/Desktop/TRANSFORMER/NICK/FOTOS INGRESANTES ETAPA-II/EDUCACIÓN PRIMARIA/"
 const path2 = "C:/Users/51988/Desktop/SALIDA DESTOP/"
