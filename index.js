@@ -24,7 +24,7 @@ const path2 = "D:/FOTOS-INGRESANTES 2020/fotos Ingresantes  2020 Filial San Lore
 var dir = 'salida';
 fs.mkdirSync(dir);
 if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir);
+    fs.mkdirSync(path2 + dir);
 }
 const path3 = path2 + dir
 
