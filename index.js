@@ -3,7 +3,12 @@ let app = require('express')();
 var request = require('request');
 var fs = require('fs')
 const sharp = require('sharp');
+const { query } = require('express');
 
+
+let path2 = ""
+var dir = 'salida/';
+let path3 = ''
 //server
 var http = require('http').createServer(webServer),
     form = require('fs').readFileSync('index.html'),
@@ -21,26 +26,40 @@ function webServer(req, res) {
         req.on('data', function (data) {
             dataString += data
         }).on("end", function () {
-            var templateString = `datos enviados ${dataString}`
-            console.log(templateString)
-            res.end(templateString)
+            var templateString = querystring.parse(dataString)
+            // res.end(JSON.stringify(templateString))
+            try {
+                path2 = templateString.into + "/"
+
+                fs.readdir(path2, function (err, archivos) {
+                    if (err) {
+                        onError(err);
+                        return;
+                    }
+                    arrayImage = archivos
+                    console.log("dev archivos", archivos)
+
+
+                    if (!fs.existsSync(path2 + dir)) {
+                        fs.mkdirSync(path2 + dir);
+                    }
+                    path3 = path2 + dir
+                    // console.log(archivos);
+                    transformImage(archivos)
+                    // test(archivos)
+                });
+            } catch (error) {
+                console.error("ocurred an error", error)
+            }
+
         })
     }
 }
 
 http.listen(3000)
 
-console.log("Runing server")
-
 // const path = "C:/Users/51988/Desktop/TRANSFORMER/NICK/FOTOS INGRESANTES ETAPA-II/EDUCACIÓN PRIMARIA/"
-const path2 = "C:/Users/51988/Desktop/SALIDA DESTOP/"
 
-var dir = 'salida/';
-
-if (!fs.existsSync(path2 + dir)) {
-    fs.mkdirSync(path2 + dir);
-}
-const path3 = path2 + dir
 
 let keys = [
     "q52uKr1KrwfXgB3168wj2n9D",
@@ -67,16 +86,7 @@ let keys = [
     "SGd7U5Z2wjCQuosTdwhZq87o",
 ]
 let keyValid = keys[0]
-fs.readdir(path2, function (err, archivos) {
-    if (err) {
-        onError(err);
-        return;
-    }
-    arrayImage = archivos
-    // console.log(archivos);
-    transformImage(archivos)
-    // test(archivos)
-});
+
 
 
 
@@ -110,6 +120,7 @@ async function apiPeticion(params) {
             apiPeticion(params)
             // return console.error('Error:', response.statusCode, body.toString('utf8'));
         } else {
+            console.log("dev params", params)
             fs.writeFileSync(`${params}`, body)
         }
 

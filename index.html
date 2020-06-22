@@ -4,14 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Document</title>
   </head>
   <body>
     <div>
       <form method="POST">
-        <div id="app">
-          {{ message }}
-        </div>
         <h1>RUTA DE ENTRADA</h1>
         <p>ejemplo : C:/USER..</p>
         <input type="text" name="into" />
@@ -19,4 +17,15 @@
       </form>
     </div>
   </body>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          title: "",
+        };
+      },
+      methods: {},
+    });
+  </script>
 </html>
